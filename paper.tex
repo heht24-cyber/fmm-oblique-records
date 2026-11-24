@@ -9,7 +9,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
 
-\title{\textbf{Oblique Hyperplane Projection Deletion and Optimal Pivot-Exchange 2-Reduction for Fast Matrix Multiplication}}
+\title{\textbf{Oblique Hyperplane Projection Deletion and Pivot-Exchange Reduction for Fast Matrix Multiplication}}
 \author{Haotian He}
 \date{November 24, 2026}
 
@@ -17,7 +17,7 @@
 \maketitle
 
 \begin{abstract}
-We introduce \emph{Oblique Hyperplane Projection Deletion}, a general exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms. Combined with an exact pivot-exchange 2-reduction procedure, this method strictly improves known characteristic-$0$ bilinear rank upper bounds across \textbf{58 undominated formats} relative to the monotone-closed state of the art as of November 24, 2026 (anchored at \texttt{fmm\_digest} commit \texttt{2daba01}), saving \textbf{1,461 multiplications} cumulatively. In particular, we establish \textbf{10 new records} with $\max(m,n,p)\le 16$---including pure dyadic ($\mathbb{Z}[1/2]$) schemes $\langle 9\times 11\times 11 : 702\rangle$, $\langle 9\times 11\times 15 : 949\rangle$, and $\langle 11\times 11\times 16 : 1224\rangle$, as well as $\langle 15\times 15\times 16 : 2105\rangle$ and $\langle 15\times 16\times 16 : 2173\rangle$---alongside \textbf{14 pure dyadic records} (individual savings up to $-63$) and \textbf{48 large formats} ($17\le \max(m,n,p)\le 23$, individual savings up to $-90$). Every scheme is independently certified over exact $\mathbb{Q}$ via deterministic Chinese Remainder Theorem verification of all $(mn)(np)(mp)$ Brent equations.
+We introduce oblique hyperplane projection deletion, an exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms. Combined with a pivot-exchange reduction step on linear dependencies among rank-$1$ terms, this method improves known characteristic-$0$ bilinear rank upper bounds for 58 matrix multiplication formats relative to the monotone-closed state of the art as of November 24, 2026 (\texttt{fmm\_digest} commit \texttt{2daba01}), including 10 formats with $\max(m,n,p)\le 16$ and 14 schemes with coefficients in $\mathbb{Z}[1/2]$. Every scheme is independently verified over exact $\mathbb{Q}$ by checking all Brent equations via the Chinese Remainder Theorem.
 \end{abstract}
 
 \section{Introduction}
@@ -28,9 +28,9 @@ A bilinear algorithm of rank $R$ for multiplying an $m\times n$ matrix $A$ by an
 \end{equation}
 where $\langle X, Y\rangle = \sum_{i,j} X_{ij} Y_{ij}$ denotes the entrywise Frobenius inner product and $U_r, V_r, W_r$ are reshaped to $m\times n$, $n\times p$, and $m\times p$ respectively. By cyclic invariance and transposition of the trilinear trace form $\operatorname{Tr}(ABC^T)$, any scheme for $\langle m\times n\times p : R\rangle$ induces an exact scheme of the same rank for every permutation of $(m,n,p)$; we therefore index formats by their canonical sorted triple $m \le n \le p$.
 
-Recent breakthroughs in exact matrix multiplication discovery---including LITA's exact rational square schemes for $13^3$ through $32^3$~\cite{lita2026}, flip-graph catalogs by Perminov~\cite{perminov2026} and Canli~\cite{quantavane2026}, and systematic coordinate-deletion sweeps by Sidebottom~\cite{sidebottom2026}---have sharply lowered known ranks across hundreds of formats tracked in Sedoglavic's Lille Catalogue~\cite{sedoglavic2026}. However, prior deletion pipelines exclusively apply \emph{coordinate deletions} (zeroing a row or column $e_k$ of $A$ or $B$), which fail to align with non-axis-aligned linear subspaces present in structured schemes.
+Recent exact matrix multiplication constructions---including LITA's rational square schemes for $13^3$ through $32^3$~\cite{lita2026}, flip-graph catalogs by Perminov~\cite{perminov2026} and Canli~\cite{quantavane2026}, and systematic coordinate-deletion sweeps by Sidebottom~\cite{sidebottom2026}---have lowered known ranks across hundreds of formats tracked in Sedoglavic's Lille Catalogue~\cite{sedoglavic2026}. However, prior deletion pipelines exclusively apply coordinate deletions (zeroing a row or column $e_k$ of $A$ or $B$), which do not align with non-axis-aligned linear subspaces present in structured schemes.
 
-In this note we generalize coordinate deletion to arbitrary oblique hyperplane projections parameterized by $(\alpha, \beta)$ with $\alpha^T \beta \neq 0$ and pair it with an optimal pivot-exchange solver for 2-reductions, yielding 58 strictly improved, independently verified characteristic-$0$ algorithms.
+In this note we generalize coordinate deletion to oblique hyperplane projections parameterized by $(\alpha, \beta)$ with $\alpha^T \beta \neq 0$, and pair it with a pivot-exchange search for rank reduction, yielding 58 strictly improved characteristic-$0$ algorithms.
 
 \section{Oblique Hyperplane Projection Deletion}
 \begin{theorem}[Oblique Hyperplane Projection Deletion]
@@ -49,41 +49,43 @@ where $R_J \in K^{(d-1)\times d}$ selects the rows indexed by $J$. Then:
 \text{Axis } 1\;(n\to n-1): &\quad (U_r \Pi^T,\; E^T V_r,\; W_r)_{r=1}^R \quad \text{for } \langle m\times (n-1)\times p\rangle, \\
 \text{Axis } 2\;(p\to p-1): &\quad (U_r,\; V_r E,\; W_r \Pi^T)_{r=1}^R \quad \text{for } \langle m\times n\times (p-1)\rangle.
 \end{align*}
-\item Every rank-$1$ term whose corresponding slice matrix has row-space (or column-space) contained in $\operatorname{span}(\alpha)$ or $\operatorname{span}(\beta)$ vanishes identically and is eliminated.
+\item Every rank-$1$ term whose corresponding slice matrix has row space (or column space) contained in $\operatorname{span}(\alpha)$ or $\operatorname{span}(\beta)$ vanishes identically and is eliminated.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-For property (1), $(\alpha^T E)_j = \alpha_j + \alpha_k(-\alpha_j/\alpha_k) = 0$ for all $j\in J$; hence $\Pi E = R_J(E - \frac{\beta(\alpha^T E)}{\alpha^T\beta}) = R_J E = E_J = I_{d-1}$. Moreover, $\Pi \beta = R_J(\beta - \frac{\beta(\alpha^T\beta)}{\alpha^T\beta}) = 0$.
+For property~(1), $(\alpha^T E)_j = \alpha_j + \alpha_k(-\alpha_j/\alpha_k) = 0$ for all $j\in J$; hence $\Pi E = R_J(E - \frac{\beta(\alpha^T E)}{\alpha^T\beta}) = R_J E = E_J = I_{d-1}$. Moreover, $\Pi \beta = R_J(\beta - \frac{\beta(\alpha^T\beta)}{\alpha^T\beta}) = 0$.
 
-For property (2), consider Axis~2 ($p\to p-1$). For arbitrary $A \in K^{m\times n}$ and $B' \in K^{n\times(p-1)}$, lift $B = B' \Pi \in K^{n\times p}$ and project the output on the right by $E$. Using $\langle V_r, B'\Pi\rangle = \operatorname{Tr}(V_r^T B'\Pi) = \operatorname{Tr}((V_r\Pi^T)^T B')$---or symmetrically setting $B = B' E^T$ and projecting on the right by $\Pi^T$ so that $B E_{\text{proj}} = B' E^T \Pi^T = B' (\Pi E)^T = B'$:
+For property~(2), consider Axis~2 ($p\to p-1$). For arbitrary $A \in K^{m\times n}$ and $B' \in K^{n\times(p-1)}$, apply the original scheme to $A$ and $B = B' E^T \in K^{n\times p}$, and multiply the output on the right by $\Pi^T$. Using $\langle V_r, B' E^T\rangle = \operatorname{Tr}(V_r^T B' E^T) = \operatorname{Tr}((V_r E)^T B') = \langle V_r E, B'\rangle$ together with $(\Pi E)^T = I_{p-1}$, we obtain
 \[
 \sum_{r=1}^R \langle U_r, A\rangle \langle V_r E, B'\rangle (W_r \Pi^T)
 = \left(\sum_{r=1}^R \langle U_r, A\rangle \langle V_r, B' E^T\rangle W_r\right)\Pi^T
 = (A B' E^T)\Pi^T = A B' (\Pi E)^T = A B'.
 \]
-Axes~0 and~1 follow identically by substituting $A = E A'$ (projecting $\Pi(EA'B) = A'B$) and $A = A'\Pi, B = E B'$ (using $A'\Pi E B' = A'B'$). Property~(3) follows immediately from $\alpha^T E = 0$ and $\Pi\beta = 0$.
+Axes~0 and~1 follow identically by setting $A = E A'$ (and multiplying the output on the left by $\Pi$, using $\Pi E = I_{m-1}$) and by setting $A = A'\Pi$, $B = E B'$ (using $\Pi E = I_{n-1}$). Property~(3) follows directly from $\alpha^T E = 0$ and $\Pi\beta = 0$.
 \end{proof}
 
 \begin{remark}[Structural Alignment with LITA Squares]
-Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $k = 2m+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$), LITA's internal symmetric dual vector $\alpha = \beta = (1,\dots,1,-(m-2),1,\dots,1)$ directly annihilates $4(m-1)m$ rank-$1$ products (e.g., $84, 112, 144, 180, 220, 264$ terms), strictly outperforming coordinate deletion by $m-1$ on the first step alone. On even LITA squares $k = 2m$ ($14^3, 16^3, 18^3, 20^3, 22^3$), coordinate deletion directly annihilates $0$ rank-$1$ products, whereas symmetric oblique projection along half-period eigenvectors $e_i \pm e_{i+m}$ directly annihilates $23$--$35+$ terms and triggers deep 2-reduction cascades.
+Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $q = 2s+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$), taking $\alpha = \beta = (1,\dots,1,-(s-2),1,\dots,1)$ directly annihilates $4(s-1)s$ rank-$1$ products (e.g., $84, 112, 144, 180, 220, 264$ terms), outperforming coordinate deletion by $s-1$ on the first step alone. On even LITA squares $q = 2s$ ($14^3, 16^3, 18^3, 20^3, 22^3$), coordinate deletion directly annihilates $0$ rank-$1$ products, whereas symmetric oblique projection along half-period vectors $e_i \pm e_{i+s}$ directly eliminates between $23$ and $35$ terms and induces further rank reductions in the subsequent step.
 \end{remark}
 
-\section{Optimal Pivot-Exchange 2-Reduction and Exact CRT Certification}
-After an oblique hyperplane projection deletion, linear dependencies among the row-wise Kronecker (Khatri--Rao) products $U \odot V$ (whose $r$-th row is $U_r \otimes V_r$), and analogously $U \odot W$ or $V \odot W$, enable exact rank elimination: if $\sum_{r=1}^R c_r (U_r \otimes V_r) = 0$ with $c_f = 1$, product $f$ can be dropped while updating $W_r \leftarrow W_r - c_r W_f$. Given a $d$-dimensional left nullspace $N \in \mathbb{F}_P^{d\times R}$ of one of these three Khatri--Rao factor matrices (computed via blocked random sketching and parallel upper-triangular elimination modulo the pseudo-Mersenne prime $P = 2^{20}-3 = 1{,}048{,}573$), any choice of $d$ independent free columns $F$ eliminates those $d$ terms and potentially annihilates additional complementary rows $W_r' = 0$. We run multi-restart exact $\Delta(p,k)$ pivot-exchange local search over basis swaps $F \mapsto (F\setminus\{p\})\cup\{k\}$ to maximize total vanished rows, routinely converting a $d$-dimensional nullspace into $3d$--$7d$ eliminated products.
+\section{Pivot-Exchange Reduction and Exact CRT Verification}
+After an oblique hyperplane projection deletion, linear dependencies among the rank-$1$ factor products allow further exact rank reductions. Consider the $R \times (mn\cdot np)$ matrix $M_{UV}$ whose $r$-th row is the Kronecker product $\operatorname{vec}(U_r) \otimes \operatorname{vec}(V_r)$ (and analogously $M_{UW}$ and $M_{VW}$). Whenever $\sum_{r=1}^R c_r (U_r \otimes V_r) = 0$ with $c_f = 1$, product $f$ can be removed while updating $W_r \leftarrow W_r - c_r W_f$ for all $r \neq f$, leaving the bilinear map unchanged.
 
-To guarantee 100\% characteristic-$0$ soundness with zero floating-point approximation:
+More generally, if the left nullspace of $M_{UV}$ has dimension $d$, any choice of $d$ independent pivot indices $F \subset \{1,\dots,R\}$ eliminates those $d$ products and replaces each remaining output matrix $W_r$ ($r \notin F$) by a linear combination of $W_r$ and $\{W_f : f \in F\}$. While every valid pivot set $F$ removes $d$ terms directly, different choices of $F$ can cause additional updated matrices $W'_r$ to vanish identically. We compute the left nullspace modulo a prime $P = 2^{20}-3$ and perform single-element basis exchanges $F \mapsto (F\setminus\{p\})\cup\{k\}$ to maximize the number of additional vanishing rows $W'_r = 0$, often removing $3d$--$7d$ terms in total.
+
+To guarantee exact characteristic-$0$ validity without floating-point approximation:
 \begin{enumerate}
-\item Every winning oblique step sequence and free-row set $F$ is replayed in exact rational arithmetic (\texttt{fractions.Fraction}), lifting nullspace matrices via 3-prime pseudo-Mersenne CRT ($P_1 = 2^{20}-3$, $P_2 = 2^{20}-5$, $P_3 = 2^{20}-17$, product $>1.15\times 10^{18}$) and Wang rational reconstruction, verifying $\sum_r c_r(A_r\otimes B_r) = 0$ identically over $\mathbb{Q}$ prior to every elimination.
-\item Each final scheme is canonically oriented to $m\le n\le p$, normalized so every $U_r, V_r$ is primitive integer ($d_U = d_V = 1$), and independently certified by a standalone verifier using completely distinct 30-bit primes ($999{,}999{,}937, 999{,}999{,}929, \dots$) whose product strictly exceeds $2(D + \sum_r \|U_r\|_\infty \|V_r\|_\infty \|W_r\|_\infty)$, checking all $(mn)(np)(mp)$ Brent equations modulo every prime, plus exact \texttt{Fraction} matrix-product trials and a negative corruption check.
+\item Every selected deletion sequence and pivot set $F$ is replayed in exact rational arithmetic (\texttt{fractions.Fraction}). Nullspace bases are lifted to $\mathbb{Q}$ from three primes ($P_1 = 2^{20}-3$, $P_2 = 2^{20}-5$, $P_3 = 2^{20}-17$, product $>1.15\times 10^{18}$) via the Chinese Remainder Theorem and Wang's rational reconstruction, and the linear dependency $\sum_r c_r (U_r \otimes V_r) = 0$ (or its $UW$/$VW$ analogue) is checked identically over $\mathbb{Q}$ prior to every elimination.
+\item Each resulting scheme is oriented to canonical format $m\le n\le p$ and cleared of denominators by positive integers $(d_U, d_V, d_W)$ so that $\tilde{U} = d_U U$, $\tilde{V} = d_V V$, and $\tilde{W} = d_W W$ are integer matrices (with $d_U = d_V = 1$). Setting $D = d_U d_V d_W$, a standalone verifier selects distinct 30-bit primes ($999{,}999{,}937, 999{,}999{,}929, \dots$) whose product strictly exceeds $2\bigl(D + \sum_{r=1}^R \|\tilde{U}_r\|_\infty \|\tilde{V}_r\|_\infty \|\tilde{W}_r\|_\infty\bigr)$, verifies all $(mn)(np)(mp)$ Brent equations modulo every prime, and runs exact rational matrix-multiplication checks together with a single-entry perturbation test.
 \end{enumerate}
 
-\section{Verified World Records}
-All baselines below are taken against the monotone closure of five sources current as of November 24, 2026: Sedoglavic's \texttt{fmm\_sota.json} in \texttt{fmm\_digest} (commit \texttt{2daba01}, 2026-11-23), Sidebottom's \texttt{gsidebottom/mat\_mul} (2026-11-22, all \texttt{schemes/}, \texttt{large/}, and \texttt{products/}), Quantavane (2026-11-14), Perminov (2026-11-16), and LITA (2026). All 58 records are mutually undominated and save \textbf{1,461 multiplications} in total.
+\section{New Characteristic-$0$ Upper Bounds}
+All baselines below are taken against the monotone closure of five sources as of November 24, 2026: Sedoglavic's \texttt{fmm\_sota.json} in \texttt{fmm\_digest} (commit \texttt{2daba01}, 2026-11-23), Sidebottom's \texttt{gsidebottom/mat\_mul} (2026-11-22, covering \texttt{schemes/}, \texttt{large/}, and \texttt{products/}), Quantavane (2026-11-14), Perminov (2026-11-16), and LITA (2026). All 58 schemes are mutually undominated and save 1,461 multiplications cumulatively.
 
 \begin{table}[ht]
 \centering
-\caption{All 10 new verified world records for classic formats $\max(m,n,p)\le 16$.}
+\caption{All 10 new characteristic-$0$ upper bounds for formats with $\max(m,n,p)\le 16$.}
 \small
 \begin{tabular}{@{}lrrrrll@{}}
 \toprule
@@ -105,7 +107,7 @@ $\langle 15\times 16\times 16\rangle$ & \textbf{2173} & 2193 & $-20$ & 2.79304 &
 
 \begin{table}[ht]
 \centering
-\caption{Selected highlights among the 48 new verified world records with $17\le \max(m,n,p)\le 23$ (complete 58-record dataset and standalone verifier provided in the accompanying repository).}
+\caption{Selected highlights among the 48 new characteristic-$0$ upper bounds with $17\le \max(m,n,p)\le 23$ (the full 58-scheme dataset and standalone verifier are provided in the accompanying repository).}
 \small
 \begin{tabular}{@{}lrrrrll@{}}
 \toprule
