@@ -11,7 +11,7 @@
   - $\langle 11\times 11\times 16 : \mathbf{1224}\rangle$ — **pure dyadic $\mathbb{Z}[1/2]$**, beating `1230` ($-6$).
   - $\langle 12\times 13\times 13 : \mathbf{1270}\rangle$ ($-4$), $\langle 13\times 14\times 15 : \mathbf{1644}\rangle$ ($-1$), $\langle 14\times 14\times 15 : \mathbf{1709}\rangle$ ($-6$), $\langle 14\times 15\times 15 : \mathbf{1836}\rangle$ ($-6$), $\langle 14\times 16\times 16 : \mathbf{2110}\rangle$ ($-18$), $\langle 15\times 15\times 16 : \mathbf{2105}\rangle$ (**$-27$**), and $\langle 15\times 16\times 16 : \mathbf{2173}\rangle$ (**$-20$** vs Sidebottom `2193`; **$-27$** vs `fmm_digest@2daba01` `2200`).
 - **14 pure dyadic ($\mathbb{Z}[1/2]$) records** (valid over every ring in which $2$ is invertible, including $\mathbb{F}_3, \mathbb{F}_5, \dots$), featuring Kronecker oblique deletions up to **$-63$** ($\langle 9\times 17\times 30 : \mathbf{2648}\rangle$, $\langle 15\times 17\times 18 : \mathbf{2648}\rangle$ [$-57$], $\langle 12\times 17\times 17 : \mathbf{2058}\rangle$ [$-56$], $\langle 11\times 18\times 21 : \mathbf{2443}\rangle$ [$-56$], $\langle 9\times 17\times 24 : \mathbf{2097}\rangle$ [$-54$], $\langle 12\times 17\times 18 : \mathbf{2106}\rangle$ [$-42$]).
-- **48 large formats ($17 \le \max \le 23$)** (`schemes_large/`), with single-format savings up to **$-90$** ($\langle 20\times 21\times 22 : \mathbf{4897}\rangle$ vs `4987`, $\langle 19\times 22\times 22 : \mathbf{4905}\rangle$ vs `4994`, $\langle 20\times 23\times 23 : \mathbf{5495}\rangle$ vs `5554`, $\langle 18\times 21\times 21 : \mathbf{4274}\rangle$ vs `4327`).
+- **48 large formats ($17 \le \max \le 30$)** (`schemes_large/`), with single-format savings up to **$-90$** ($\langle 20\times 21\times 22 : \mathbf{4897}\rangle$ vs `4987`, $\langle 19\times 22\times 22 : \mathbf{4905}\rangle$ vs `4994`, $\langle 20\times 23\times 23 : \mathbf{5495}\rangle$ vs `5554`, $\langle 18\times 21\times 21 : \mathbf{4274}\rangle$ vs `4327`).
 
 See [RESULTS_TABLE.md](RESULTS_TABLE.md) for the complete 58-row table and [paper.tex](paper.tex) for the mathematical proof and structural analysis.
 
@@ -50,8 +50,8 @@ For each scheme, `verify_all.py`:
 ## Repository Layout
 
 - `schemes_classic_le16/` — 10 compressed exact schemes with $\max(m, n, p) \le 16$.
-- `schemes_large/` — 48 compressed exact schemes with $17 \le \max(m, n, p) \le 23$.
-- `verify_all.py` — Standalone zero-dependency deterministic CRT exact verifier.
+- `schemes_large/` — 48 compressed exact schemes with $17 \le \max(m, n, p) \le 30$.
+- `verify_all.py` — Standalone Python/NumPy deterministic CRT exact verifier.
 - `RESULTS_TABLE.md` & `results_summary.json` — Full verified comparison tables.
 - `paper.tex` — Formal technical manuscript detailing the theorem, structural analysis, and results.
 - `LICENSE` — MIT License.

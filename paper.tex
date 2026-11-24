@@ -34,13 +34,13 @@ In this note we generalize coordinate deletion to oblique hyperplane projections
 
 \section{Oblique Hyperplane Projection Deletion}
 \begin{theorem}[Oblique Hyperplane Projection Deletion]
-Let $(U, V, W)$ be an exact bilinear scheme of rank $R$ for $\langle m\times n\times p\rangle$ over a field $K$. Let $d \in \{m,n,p\}$ be the dimension of a chosen axis, and let $\alpha, \beta \in K^d$ be any vectors such that $\alpha^T \beta \neq 0$ (specifying the hyperplane $\ker(\alpha^T)$ and the complementary projection direction $\operatorname{span}(\beta)$). Choose any index $k \in \{0,\dots,d-1\}$ with $\alpha_k \neq 0$, let $J = \{0,\dots,d-1\}\setminus\{k\}$, and define the embedding $E \in K^{d\times (d-1)}$ and oblique projection $\Pi \in K^{(d-1)\times d}$ by
+Let $(U, V, W)$ be an exact bilinear scheme of rank $R$ for $\langle m\times n\times p\rangle$ over a field $K$. Let $d \in \{m,n,p\}$ be the dimension of a chosen axis, and let $\alpha, \beta \in K^d$ be any vectors such that $\alpha^T \beta \neq 0$ (specifying the hyperplane $\ker(\alpha^T)$ and the complementary projection direction $\operatorname{span}(\beta)$). Choose any index $k \in \{0,\dots,d-1\}$ with $\alpha_k \neq 0$, let $J = \{0,\dots,d-1\}\setminus\{k\}$, and let $R_J \in K^{(d-1)\times d}$ select the rows indexed by $J$. Indexing the columns of the embedding $E \in K^{d\times (d-1)}$ by $J$, define $E$ and the oblique projection $\Pi \in K^{(d-1)\times d}$ by
 \begin{equation}
-E_J = I_{d-1}, \quad E_{k,j} = -\frac{\alpha_j}{\alpha_k}\;\; (j \in J),
+E_{i,j} = \delta_{i,j} \;\; (i,j \in J), \quad E_{k,j} = -\frac{\alpha_j}{\alpha_k}\;\; (j \in J),
 \qquad
-\Pi = R_J\!\left(I_d - \frac{\beta \alpha^T}{\alpha^T \beta}\right),
+\Pi = R_J\!\left(I_d - \frac{\beta \alpha^T}{\alpha^T \beta}\right).
 \end{equation}
-where $R_J \in K^{(d-1)\times d}$ selects the rows indexed by $J$. Then:
+Then:
 \begin{enumerate}
 \item $\alpha^T E = 0$, $\Pi \beta = 0$, and $\Pi E = I_{d-1}$.
 \item The transformed triplets below are exact bilinear schemes of rank at most $R$:
@@ -54,7 +54,7 @@ where $R_J \in K^{(d-1)\times d}$ selects the rows indexed by $J$. Then:
 \end{theorem}
 
 \begin{proof}
-For property~(1), $(\alpha^T E)_j = \alpha_j + \alpha_k(-\alpha_j/\alpha_k) = 0$ for all $j\in J$; hence $\Pi E = R_J(E - \frac{\beta(\alpha^T E)}{\alpha^T\beta}) = R_J E = E_J = I_{d-1}$. Moreover, $\Pi \beta = R_J(\beta - \frac{\beta(\alpha^T\beta)}{\alpha^T\beta}) = 0$.
+For property~(1), $(\alpha^T E)_j = \alpha_j + \alpha_k(-\alpha_j/\alpha_k) = 0$ for all $j\in J$; hence $\Pi E = R_J(E - \frac{\beta(\alpha^T E)}{\alpha^T\beta}) = R_J E = I_{d-1}$. Moreover, $\Pi \beta = R_J(\beta - \frac{\beta(\alpha^T\beta)}{\alpha^T\beta}) = 0$.
 
 For property~(2), consider Axis~2 ($p\to p-1$). For arbitrary $A \in K^{m\times n}$ and $B' \in K^{n\times(p-1)}$, apply the original scheme to $A$ and $B = B' E^T \in K^{n\times p}$, and multiply the output on the right by $\Pi^T$. Using $\langle V_r, B' E^T\rangle = \operatorname{Tr}(V_r^T B' E^T) = \operatorname{Tr}((V_r E)^T B') = \langle V_r E, B'\rangle$ together with $(\Pi E)^T = I_{p-1}$, we obtain
 \[
@@ -66,13 +66,13 @@ Axes~0 and~1 follow identically by setting $A = E A'$ (and multiplying the outpu
 \end{proof}
 
 \begin{remark}[Structural Alignment with LITA Squares]
-Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $q = 2s+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$), taking $\alpha = \beta = (1,\dots,1,-(s-2),1,\dots,1)$ directly annihilates $4(s-1)s$ rank-$1$ products (e.g., $84, 112, 144, 180, 220, 264$ terms), outperforming coordinate deletion by $s-1$ on the first step alone. On even LITA squares $q = 2s$ ($14^3, 16^3, 18^3, 20^3, 22^3$), coordinate deletion directly annihilates $0$ rank-$1$ products, whereas symmetric oblique projection along half-period vectors $e_i \pm e_{i+s}$ directly eliminates between $23$ and $35$ terms and induces further rank reductions in the subsequent step.
+Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $q = 2s+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$), taking $\alpha = \beta \in K^q$ with one coordinate equal to $-(s-2)$ and the remaining $2s$ coordinates equal to $1$ directly annihilates $4(s-1)s$ rank-$1$ products (e.g., $84, 112, 144, 180, 220, 264$ terms), outperforming coordinate deletion by $s-1$ on the first step alone. On even LITA squares $q = 2s$ ($14^3, 16^3, 18^3, 20^3, 22^3$), coordinate deletion directly annihilates $0$ rank-$1$ products, whereas symmetric oblique projection along half-period vectors $e_i \pm e_{i+s}$ directly eliminates between $23$ and $35$ terms and induces further rank reductions in the subsequent step.
 \end{remark}
 
 \section{Pivot-Exchange Reduction and Exact CRT Verification}
 After an oblique hyperplane projection deletion, linear dependencies among the rank-$1$ factor products allow further exact rank reductions. Consider the $R \times (mn\cdot np)$ matrix $M_{UV}$ whose $r$-th row is the Kronecker product $\operatorname{vec}(U_r) \otimes \operatorname{vec}(V_r)$ (and analogously $M_{UW}$ and $M_{VW}$). Whenever $\sum_{r=1}^R c_r (U_r \otimes V_r) = 0$ with $c_f = 1$, product $f$ can be removed while updating $W_r \leftarrow W_r - c_r W_f$ for all $r \neq f$, leaving the bilinear map unchanged.
 
-More generally, if the left nullspace of $M_{UV}$ has dimension $d$, any choice of $d$ independent pivot indices $F \subset \{1,\dots,R\}$ eliminates those $d$ products and replaces each remaining output matrix $W_r$ ($r \notin F$) by a linear combination of $W_r$ and $\{W_f : f \in F\}$. While every valid pivot set $F$ removes $d$ terms directly, different choices of $F$ can cause additional updated matrices $W'_r$ to vanish identically. We compute the left nullspace modulo a prime $P = 2^{20}-3$ and perform single-element basis exchanges $F \mapsto (F\setminus\{p\})\cup\{k\}$ to maximize the number of additional vanishing rows $W'_r = 0$, often removing $3d$--$7d$ terms in total.
+More generally, if the left nullspace of $M_{UV}$ has dimension $\nu$, any choice of $\nu$ independent pivot indices $F \subset \{1,\dots,R\}$ eliminates those $\nu$ products and replaces each remaining output matrix $W_r$ ($r \notin F$) by a linear combination of $W_r$ and $\{W_f : f \in F\}$. While every valid pivot set $F$ removes $\nu$ terms directly, different choices of $F$ can cause additional updated matrices $W'_r$ to vanish identically. We compute the left nullspace modulo a prime $P = 2^{20}-3$ and perform single-element basis exchanges $F \mapsto (F\setminus\{i\})\cup\{j\}$ to maximize the number of additional vanishing rows $W'_r = 0$, often removing $3\nu$--$7\nu$ terms in total.
 
 To guarantee exact characteristic-$0$ validity without floating-point approximation:
 \begin{enumerate}
@@ -107,7 +107,7 @@ $\langle 15\times 16\times 16\rangle$ & \textbf{2173} & 2193 & $-20$ & 2.79304 &
 
 \begin{table}[ht]
 \centering
-\caption{Selected highlights among the 48 new characteristic-$0$ upper bounds with $17\le \max(m,n,p)\le 23$ (the full 58-scheme dataset and standalone verifier are provided in the accompanying repository).}
+\caption{Selected highlights among the 48 new characteristic-$0$ upper bounds with $17\le \max(m,n,p)\le 30$ (the full 58-scheme dataset and standalone verifier are provided in the accompanying repository).}
 \small
 \begin{tabular}{@{}lrrrrll@{}}
 \toprule
@@ -134,7 +134,7 @@ $\langle 16\times 17\times 18\rangle$ & \textbf{2830} & 2864 & $-34$ & 2.80645 &
 \end{table}
 
 \section{Data Availability}
-All 58 canonically oriented compressed exact schemes (\texttt{.json.gz}), complete tables (\texttt{RESULTS\_TABLE.md}), and the standalone zero-dependency deterministic CRT verifier (\texttt{verify\_all.py}) are publicly released under the MIT license.
+All 58 canonically oriented compressed exact schemes (\texttt{.json.gz}), complete tables (\texttt{RESULTS\_TABLE.md}), and the standalone Python/NumPy deterministic CRT verifier (\texttt{verify\_all.py}) are publicly released under the MIT license.
 
 \begin{thebibliography}{9}
 \bibitem{sedoglavic2026}
