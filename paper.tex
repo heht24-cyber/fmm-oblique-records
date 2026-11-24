@@ -9,7 +9,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
 
-\title{\textbf{Oblique Hyperplane-Line Projection Deletion and Optimal Pivot-Exchange 2-Reduction for Fast Matrix Multiplication}}
+\title{\textbf{Oblique Hyperplane Projection Deletion and Optimal Pivot-Exchange 2-Reduction for Fast Matrix Multiplication}}
 \author{Haotian He}
 \date{November 24, 2026}
 
@@ -17,7 +17,7 @@
 \maketitle
 
 \begin{abstract}
-We introduce \emph{Oblique Hyperplane-Line Projection Deletion}, a general exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms that replaces standard coordinate restriction ($e_k$) with an arbitrary non-orthogonal hyperplane-line pair $(\alpha, \beta) \in K^d \times K^d$ satisfying $\alpha^T \beta \neq 0$. Combined with \emph{Optimal Pivot-Exchange 2-Reduction} over the pair nullspaces $(U\odot V, U\odot W, V\odot W)$, this method exposes hidden linear symmetries in modern high-efficiency schemes---specifically internal dual vectors of odd LITA squares, half-period eigenvectors $e_i \pm e_{i+m}$ of even LITA squares (where standard coordinate deletion annihilates zero rank-$1$ terms directly), and Kronecker products of rational champions such as Dumas--Pernet--Sedoglavic's $\langle 3\times 3\times 6 : 40\rangle$. Across exact characteristic-$0$ schemes, we obtain \textbf{58 new undominated world records} strictly below the monotone-closed November 24, 2026 state of the art, saving \textbf{1,461 multiplications} cumulatively. Notably, we establish \textbf{10 new classic records} with $\max(m,n,p)\le 16$---including pure dyadic ($\mathbb{Z}[1/2]$) algorithms $\langle 9\times 11\times 11 : 702\rangle$, $\langle 9\times 11\times 15 : 949\rangle$, and $\langle 11\times 11\times 16 : 1224\rangle$, as well as $\langle 15\times 15\times 16 : 2105\rangle$ ($-27$) and $\langle 15\times 16\times 16 : 2173\rangle$ ($-20$)---alongside \textbf{14 pure dyadic records} (savings up to $-63$) and \textbf{48 large formats} ($17\le \max\le 23$, savings up to $-90$). Every scheme is certified over exact $\mathbb{Q}$ via deterministic Chinese Remainder Theorem verification of all $(mn)(np)(mp)$ Brent equations.
+We introduce \emph{Oblique Hyperplane Projection Deletion}, a general exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms. Combined with an exact pivot-exchange 2-reduction procedure, this method strictly improves known characteristic-$0$ bilinear rank upper bounds across \textbf{58 undominated formats} relative to the monotone-closed state of the art as of November 24, 2026 (anchored at \texttt{fmm\_digest} commit \texttt{2daba01}), saving \textbf{1,461 multiplications} cumulatively. In particular, we establish \textbf{10 new records} with $\max(m,n,p)\le 16$---including pure dyadic ($\mathbb{Z}[1/2]$) schemes $\langle 9\times 11\times 11 : 702\rangle$, $\langle 9\times 11\times 15 : 949\rangle$, and $\langle 11\times 11\times 16 : 1224\rangle$, as well as $\langle 15\times 15\times 16 : 2105\rangle$ and $\langle 15\times 16\times 16 : 2173\rangle$---alongside \textbf{14 pure dyadic records} (individual savings up to $-63$) and \textbf{48 large formats} ($17\le \max(m,n,p)\le 23$, individual savings up to $-90$). Every scheme is independently certified over exact $\mathbb{Q}$ via deterministic Chinese Remainder Theorem verification of all $(mn)(np)(mp)$ Brent equations.
 \end{abstract}
 
 \section{Introduction}
@@ -30,11 +30,11 @@ where $\langle X, Y\rangle = \sum_{i,j} X_{ij} Y_{ij}$ denotes the entrywise Fro
 
 Recent breakthroughs in exact matrix multiplication discovery---including LITA's exact rational square schemes for $13^3$ through $32^3$~\cite{lita2026}, flip-graph catalogs by Perminov~\cite{perminov2026} and Canli~\cite{quantavane2026}, and systematic coordinate-deletion sweeps by Sidebottom~\cite{sidebottom2026}---have sharply lowered known ranks across hundreds of formats tracked in Sedoglavic's Lille Catalogue~\cite{sedoglavic2026}. However, prior deletion pipelines exclusively apply \emph{coordinate deletions} (zeroing a row or column $e_k$ of $A$ or $B$), which fail to align with non-axis-aligned linear subspaces present in structured schemes.
 
-In this note we generalize coordinate deletion to arbitrary oblique hyperplane-line projections $(\alpha, \beta)$ and pair it with an optimal pivot-exchange solver for 2-reductions, yielding 58 strictly improved, independently verified characteristic-$0$ algorithms.
+In this note we generalize coordinate deletion to arbitrary oblique hyperplane projections parameterized by $(\alpha, \beta)$ with $\alpha^T \beta \neq 0$ and pair it with an optimal pivot-exchange solver for 2-reductions, yielding 58 strictly improved, independently verified characteristic-$0$ algorithms.
 
-\section{Oblique Hyperplane-Line Projection Deletion}
-\begin{theorem}[Oblique Hyperplane-Line Projection Deletion]
-Let $(U, V, W)$ be an exact bilinear scheme of rank $R$ for $\langle m\times n\times p\rangle$ over a field $K$. Let $d \in \{m,n,p\}$ be the dimension of a chosen axis, and let $\alpha, \beta \in K^d$ be any vectors such that $\alpha^T \beta \neq 0$. Choose any index $k \in \{0,\dots,d-1\}$ with $\alpha_k \neq 0$, let $J = \{0,\dots,d-1\}\setminus\{k\}$, and define the embedding $E \in K^{d\times (d-1)}$ and oblique projection $\Pi \in K^{(d-1)\times d}$ by
+\section{Oblique Hyperplane Projection Deletion}
+\begin{theorem}[Oblique Hyperplane Projection Deletion]
+Let $(U, V, W)$ be an exact bilinear scheme of rank $R$ for $\langle m\times n\times p\rangle$ over a field $K$. Let $d \in \{m,n,p\}$ be the dimension of a chosen axis, and let $\alpha, \beta \in K^d$ be any vectors such that $\alpha^T \beta \neq 0$ (specifying the hyperplane $\ker(\alpha^T)$ and the complementary projection direction $\operatorname{span}(\beta)$). Choose any index $k \in \{0,\dots,d-1\}$ with $\alpha_k \neq 0$, let $J = \{0,\dots,d-1\}\setminus\{k\}$, and define the embedding $E \in K^{d\times (d-1)}$ and oblique projection $\Pi \in K^{(d-1)\times d}$ by
 \begin{equation}
 E_J = I_{d-1}, \quad E_{k,j} = -\frac{\alpha_j}{\alpha_k}\;\; (j \in J),
 \qquad
@@ -70,16 +70,16 @@ Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd 
 \end{remark}
 
 \section{Optimal Pivot-Exchange 2-Reduction and Exact CRT Certification}
-After an oblique deletion, linear dependencies among the Khatri--Rao products $\{U_r \otimes V_r\}$ (or $\{U_r \otimes W_r\}$, $\{V_r \otimes W_r\}$) enable exact rank elimination: if $\sum_{r=1}^R c_r (U_r \otimes V_r) = 0$ with $c_f = 1$, product $f$ can be dropped while updating $W_r \leftarrow W_r - c_r W_f$. Given a $d$-dimensional left nullspace $N \in \mathbb{F}_P^{d\times R}$ (computed via blocked Khatri--Rao random sketching and parallel upper-triangular elimination modulo the pseudo-Mersenne prime $P = 2^{20}-3 = 1{,}048{,}573$), any choice of $d$ independent free columns $F$ eliminates those $d$ terms and potentially annihilates additional complementary rows $W_r' = 0$. We run multi-restart exact $\Delta(p,k)$ pivot-exchange local search over basis swaps $F \mapsto (F\setminus\{p\})\cup\{k\}$ to maximize total vanished rows, routinely converting a $d$-dimensional nullspace into $3d$--$7d$ eliminated products.
+After an oblique hyperplane projection deletion, linear dependencies among the row-wise Kronecker (Khatri--Rao) products $U \odot V$ (whose $r$-th row is $U_r \otimes V_r$), and analogously $U \odot W$ or $V \odot W$, enable exact rank elimination: if $\sum_{r=1}^R c_r (U_r \otimes V_r) = 0$ with $c_f = 1$, product $f$ can be dropped while updating $W_r \leftarrow W_r - c_r W_f$. Given a $d$-dimensional left nullspace $N \in \mathbb{F}_P^{d\times R}$ of one of these three Khatri--Rao factor matrices (computed via blocked random sketching and parallel upper-triangular elimination modulo the pseudo-Mersenne prime $P = 2^{20}-3 = 1{,}048{,}573$), any choice of $d$ independent free columns $F$ eliminates those $d$ terms and potentially annihilates additional complementary rows $W_r' = 0$. We run multi-restart exact $\Delta(p,k)$ pivot-exchange local search over basis swaps $F \mapsto (F\setminus\{p\})\cup\{k\}$ to maximize total vanished rows, routinely converting a $d$-dimensional nullspace into $3d$--$7d$ eliminated products.
 
 To guarantee 100\% characteristic-$0$ soundness with zero floating-point approximation:
 \begin{enumerate}
-\item Every winning oblique step sequence and free-row set $F$ is replayed in exact rational arithmetic (`fractions.Fraction`), lifting nullspace matrices via 3-prime pseudo-Mersenne CRT ($P_1 = 2^{20}-3$, $P_2 = 2^{20}-5$, $P_3 = 2^{20}-17$, product $>1.15\times 10^{18}$) and Wang rational reconstruction, verifying $\sum_r c_r(A_r\otimes B_r) = 0$ identically over $\mathbb{Q}$ prior to every elimination.
-\item Each final scheme is canonically oriented to $m\le n\le p$, normalized so every $U_r, V_r$ is primitive integer ($d_U = d_V = 1$), and independently certified by a standalone verifier using completely distinct 30-bit primes ($999{,}999{,}937, 999{,}999{,}929, \dots$) whose product strictly exceeds $2(D + \sum_r \|U_r\|_\infty \|V_r\|_\infty \|W_r\|_\infty)$, checking all $(mn)(np)(mp)$ Brent equations modulo every prime, plus exact `Fraction` matrix-product trials and a negative corruption check.
+\item Every winning oblique step sequence and free-row set $F$ is replayed in exact rational arithmetic (\texttt{fractions.Fraction}), lifting nullspace matrices via 3-prime pseudo-Mersenne CRT ($P_1 = 2^{20}-3$, $P_2 = 2^{20}-5$, $P_3 = 2^{20}-17$, product $>1.15\times 10^{18}$) and Wang rational reconstruction, verifying $\sum_r c_r(A_r\otimes B_r) = 0$ identically over $\mathbb{Q}$ prior to every elimination.
+\item Each final scheme is canonically oriented to $m\le n\le p$, normalized so every $U_r, V_r$ is primitive integer ($d_U = d_V = 1$), and independently certified by a standalone verifier using completely distinct 30-bit primes ($999{,}999{,}937, 999{,}999{,}929, \dots$) whose product strictly exceeds $2(D + \sum_r \|U_r\|_\infty \|V_r\|_\infty \|W_r\|_\infty)$, checking all $(mn)(np)(mp)$ Brent equations modulo every prime, plus exact \texttt{Fraction} matrix-product trials and a negative corruption check.
 \end{enumerate}
 
 \section{Verified World Records}
-All baselines below are taken against the monotone closure of five sources current as of November 24, 2026: Sedoglavic's `fmm_sota.json` (2026-11-23), Sidebottom's `gsidebottom/mat_mul` (2026-11-22, all `schemes/`, `large/`, and `products/`), Quantavane (2026-11-14), Perminov (2026-11-16), and LITA (2026). All 58 records are mutually undominated and save \textbf{1,461 multiplications} in total.
+All baselines below are taken against the monotone closure of five sources current as of November 24, 2026: Sedoglavic's \texttt{fmm\_sota.json} in \texttt{fmm\_digest} (commit \texttt{2daba01}, 2026-11-23), Sidebottom's \texttt{gsidebottom/mat\_mul} (2026-11-22, all \texttt{schemes/}, \texttt{large/}, and \texttt{products/}), Quantavane (2026-11-14), Perminov (2026-11-16), and LITA (2026). All 58 records are mutually undominated and save \textbf{1,461 multiplications} in total.
 
 \begin{table}[ht]
 \centering
@@ -114,7 +114,7 @@ Format & New Rank & Prev.\ SOTA & Gain & $\omega_{\text{new}}$ & Ring & Parent S
 $\langle 20\times 21\times 22\rangle$ & \textbf{4897} & 4987 & $-90$ & 2.79140 & $\mathbb{Z}[1/2,1/3,1/11]$ & LITA $22^3$ ($5141$) \\
 $\langle 19\times 22\times 22\rangle$ & \textbf{4905} & 4994 & $-89$ & 2.79340 & $\mathbb{Z}[1/2,1/3,1/11]$ & LITA $22^3$ ($5141$) \\
 $\langle 9\times 17\times 30\rangle$  & \textbf{2648} & 2711 & $-63$ & 2.80428 & $\mathbb{Z}[1/2]$ & $\langle 3\times 3\times 6:40\rangle \otimes \langle 3\times 6\times 5:68\rangle$ \\
-$\langle 20\times 23\times 23\rangle$ & \textbf{5495} & 5554 & $-59$ & 2.78349 & $\mathbb{Z}[1/2,1/3,1/11]$ & LITA $23^3$ ($6009$) \\
+$\langle 20\times 23\times 23\rangle$ & \textbf{5495} & 5554 & $-59$ & 2.78791 & $\mathbb{Z}[1/2,1/3,1/11]$ & LITA $23^3$ ($6009$) \\
 $\langle 15\times 17\times 18\rangle$ & \textbf{2648} & 2705 & $-57$ & 2.80428 & $\mathbb{Z}[1/2]$ & $\langle 3\times 3\times 6:40\rangle \otimes \langle 5\times 6\times 3:68\rangle$ \\
 $\langle 12\times 17\times 17\rangle$ & \textbf{2058} & 2114 & $-56$ & 2.80794 & $\mathbb{Z}[1/2]$ & $\langle 3\times 3\times 6:40\rangle \otimes \langle 4\times 6\times 3:54\rangle$ \\
 $\langle 11\times 18\times 21\rangle$ & \textbf{2443} & 2499 & $-56$ & 2.80854 & $\mathbb{Z}[1/2]$ & $\langle 3\times 3\times 6:40\rangle \otimes \langle 4\times 7\times 3:64\rangle$ \\
@@ -132,11 +132,11 @@ $\langle 16\times 17\times 18\rangle$ & \textbf{2830} & 2864 & $-34$ & 2.80645 &
 \end{table}
 
 \section{Data Availability}
-All 58 canonically oriented compressed exact schemes (`.json.gz`), complete tables (`RESULTS_TABLE.md`), and the standalone zero-dependency deterministic CRT verifier (`verify_all.py`) are publicly released under the MIT license.
+All 58 canonically oriented compressed exact schemes (\texttt{.json.gz}), complete tables (\texttt{RESULTS\_TABLE.md}), and the standalone zero-dependency deterministic CRT verifier (\texttt{verify\_all.py}) are publicly released under the MIT license.
 
 \begin{thebibliography}{9}
 \bibitem{sedoglavic2026}
-A.~Sedoglavic, \emph{Fast Matrix Multiplication Algorithms Digest}, \url{https://github.com/sedoglavic/fmm_digest} and \url{https://fmm.univ-lille.fr/}, snapshot 2026-11-23.
+A.~Sedoglavic, \emph{Fast Matrix Multiplication Algorithms Digest}, \url{https://github.com/sedoglavic/fmm_digest} (commit \texttt{2daba01}, 2026-11-23) and \url{https://fmm.univ-lille.fr/}.
 \bibitem{sidebottom2026}
 G.~Sidebottom, \emph{mat\_mul: Matrix Multiplication Schemes}, \url{https://github.com/gsidebottom/mat_mul}, snapshot 2026-11-22.
 \bibitem{perminov2026}

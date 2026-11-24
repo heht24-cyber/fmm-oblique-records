@@ -1,6 +1,6 @@
 # Verified Exact Characteristic-0 Fast Matrix Multiplication World Records
 
-- **Total Undominated Certified World Records**: **58** (all strictly below the monotone-closed 2026-11-24 Master SOTA combining Sedoglavic `fmm_sota.json` [2026-11-23], Sidebottom `gsidebottom/mat_mul` [2026-11-22], Quantavane [2026-11-14], Perminov [2026-11-16], and LITA [2026]).
+- **Total Undominated Certified World Records**: **58** (all strictly below the monotone-closed 2026-11-24 Master SOTA combining Sedoglavic `fmm_sota.json` [`fmm_digest` commit `2daba01`, 2026-11-23], Sidebottom `gsidebottom/mat_mul` [2026-11-22], Quantavane [2026-11-14], Perminov [2026-11-16], and LITA [2026]).
 - **Classic Formats (`max(m, n, p) <= 16`)**: **10** records.
 - **Pure Dyadic ($\mathbb{Z}[1/2]$) / Integer Records**: **14** records.
 - **Total Cumulative Multiplications Saved**: **-1461**.
