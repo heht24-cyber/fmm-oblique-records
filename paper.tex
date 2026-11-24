@@ -17,7 +17,7 @@
 \maketitle
 
 \begin{abstract}
-We introduce oblique hyperplane projection deletion, an exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms. Combined with a pivot-exchange reduction step on linear dependencies among rank-$1$ terms, this method improves known characteristic-$0$ bilinear rank upper bounds for 58 matrix multiplication formats relative to the monotone-closed state of the art as of November 24, 2026 (\texttt{fmm\_digest} commit \texttt{2daba01}), including 10 formats with $\max(m,n,p)\le 16$ and 14 schemes with coefficients in $\mathbb{Z}[1/2]$. Every scheme is independently verified over exact $\mathbb{Q}$ by checking all Brent equations via the Chinese Remainder Theorem.
+We introduce oblique hyperplane projection deletion, an exact rank-preserving dimension-reduction operator on bilinear matrix multiplication algorithms. Combined with rank reduction on linear dependencies among rank-$1$ terms, this method improves known characteristic-$0$ bilinear rank upper bounds for 58 matrix multiplication formats relative to the monotone-closed state of the art as of November 24, 2026 (\texttt{fmm\_digest} commit \texttt{2daba01}), including 10 formats with $\max(m,n,p)\le 16$ and 14 schemes with coefficients in $\mathbb{Z}[1/2]$. Every scheme is independently verified over exact $\mathbb{Q}$ by checking all Brent equations via the Chinese Remainder Theorem.
 \end{abstract}
 
 \section{Introduction}
@@ -49,7 +49,7 @@ Then:
 \text{Axis } 1\;(n\to n-1): &\quad (U_r \Pi^T,\; E^T V_r,\; W_r)_{r=1}^R \quad \text{for } \langle m\times (n-1)\times p\rangle, \\
 \text{Axis } 2\;(p\to p-1): &\quad (U_r,\; V_r E,\; W_r \Pi^T)_{r=1}^R \quad \text{for } \langle m\times n\times (p-1)\rangle.
 \end{align*}
-\item Every rank-$1$ term whose corresponding slice matrix has row space (or column space) contained in $\operatorname{span}(\alpha)$ or $\operatorname{span}(\beta)$ vanishes identically and is eliminated.
+\item A rank-$1$ term vanishes identically whenever the factor multiplied by $E$ or $E^T$ has the corresponding (column or row) space contained in $\operatorname{span}(\alpha)$, or the factor multiplied by $\Pi$ or $\Pi^T$ has the corresponding space contained in $\operatorname{span}(\beta)$. Specifically, term $r$ is eliminated on Axis~0 when $\operatorname{col}(U_r)\subseteq\operatorname{span}(\alpha)$ or $\operatorname{col}(W_r)\subseteq\operatorname{span}(\beta)$, on Axis~1 when $\operatorname{col}(V_r)\subseteq\operatorname{span}(\alpha)$ or $\operatorname{row}(U_r)\subseteq\operatorname{span}(\beta)$, and on Axis~2 when $\operatorname{row}(V_r)\subseteq\operatorname{span}(\alpha)$ or $\operatorname{row}(W_r)\subseteq\operatorname{span}(\beta)$.
 \end{enumerate}
 \end{theorem}
 
@@ -57,16 +57,16 @@ Then:
 For property~(1), $(\alpha^T E)_j = \alpha_j + \alpha_k(-\alpha_j/\alpha_k) = 0$ for all $j\in J$; hence $\Pi E = R_J(E - \frac{\beta(\alpha^T E)}{\alpha^T\beta}) = R_J E = I_{d-1}$. Moreover, $\Pi \beta = R_J(\beta - \frac{\beta(\alpha^T\beta)}{\alpha^T\beta}) = 0$.
 
 For property~(2), consider Axis~2 ($p\to p-1$). For arbitrary $A \in K^{m\times n}$ and $B' \in K^{n\times(p-1)}$, apply the original scheme to $A$ and $B = B' E^T \in K^{n\times p}$, and multiply the output on the right by $\Pi^T$. Using $\langle V_r, B' E^T\rangle = \operatorname{Tr}(V_r^T B' E^T) = \operatorname{Tr}((V_r E)^T B') = \langle V_r E, B'\rangle$ together with $(\Pi E)^T = I_{p-1}$, we obtain
-\[
+\begin{align*}
 \sum_{r=1}^R \langle U_r, A\rangle \langle V_r E, B'\rangle (W_r \Pi^T)
-= \left(\sum_{r=1}^R \langle U_r, A\rangle \langle V_r, B' E^T\rangle W_r\right)\Pi^T
-= (A B' E^T)\Pi^T = A B' (\Pi E)^T = A B'.
-\]
-Axes~0 and~1 follow identically by setting $A = E A'$ (and multiplying the output on the left by $\Pi$, using $\Pi E = I_{m-1}$) and by setting $A = A'\Pi$, $B = E B'$ (using $\Pi E = I_{n-1}$). Property~(3) follows directly from $\alpha^T E = 0$ and $\Pi\beta = 0$.
+&= \left(\sum_{r=1}^R \langle U_r, A\rangle \langle V_r, B' E^T\rangle W_r\right)\Pi^T \\
+&= (A B' E^T)\Pi^T = A B' (\Pi E)^T = A B'.
+\end{align*}
+Axes~0 and~1 follow identically by setting $A = E A'$ (and multiplying the output on the left by $\Pi$, using $\Pi E = I_{m-1}$) and by setting $A = A'\Pi$, $B = E B'$ (using $\Pi E = I_{n-1}$). Property~(3) follows directly from $\alpha^T E = 0$ (equivalently $E^T \alpha = 0$) and $\Pi\beta = 0$ (equivalently $\beta^T \Pi^T = 0$).
 \end{proof}
 
 \begin{remark}[Structural Alignment with LITA Squares]
-Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $q = 2s+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$), taking $\alpha = \beta \in K^q$ with one coordinate equal to $-(s-2)$ and the remaining $2s$ coordinates equal to $1$ directly annihilates $4(s-1)s$ rank-$1$ products (e.g., $84, 112, 144, 180, 220, 264$ terms), outperforming coordinate deletion by $s-1$ on the first step alone. On even LITA squares $q = 2s$ ($14^3, 16^3, 18^3, 20^3, 22^3$), coordinate deletion directly annihilates $0$ rank-$1$ products, whereas symmetric oblique projection along half-period vectors $e_i \pm e_{i+s}$ directly eliminates between $23$ and $35$ terms and induces further rank reductions in the subsequent step.
+Standard coordinate deletion is the special case $\alpha = \beta = e_k$. On odd LITA squares $q = 2s+1$ ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3$, corresponding to $s = 6,\dots,11$), coordinate deletion directly eliminates at most $2q = 4s+2$ rank-$1$ products ($26, 30, 34, 38, 42, 46$), whereas choosing $\alpha = \beta \in K^q$ with coordinate $s$ (0-indexed) equal to $-(s-2)$ and the remaining $2s$ coordinates equal to $1$ directly eliminates $2s(s+1)$ rank-$1$ products ($84, 112, 144, 180, 220, 264$). On even LITA squares $q = 2s$ ($14^3, 16^3, 18^3, 20^3, 22^3$, corresponding to $s = 7,\dots,11$), coordinate deletion directly eliminates $0$ rank-$1$ products across all three axes, whereas symmetric oblique projection along $e_i - e_{i+s}$ directly eliminates $3s+2$ terms ($23, 26, 29, 32, 35$) on Axis~0 and induces further rank reductions in the subsequent step.
 \end{remark}
 
 \section{Pivot-Exchange Reduction and Exact CRT Verification}
@@ -80,13 +80,14 @@ To guarantee exact characteristic-$0$ validity without floating-point approximat
 \item Each resulting scheme is oriented to canonical format $m\le n\le p$ and cleared of denominators by positive integers $(d_U, d_V, d_W)$ so that $\tilde{U} = d_U U$, $\tilde{V} = d_V V$, and $\tilde{W} = d_W W$ are integer matrices (with $d_U = d_V = 1$). Setting $D = d_U d_V d_W$, a standalone verifier selects distinct 30-bit primes ($999{,}999{,}937, 999{,}999{,}929, \dots$) whose product strictly exceeds $2\bigl(D + \sum_{r=1}^R \|\tilde{U}_r\|_\infty \|\tilde{V}_r\|_\infty \|\tilde{W}_r\|_\infty\bigr)$, verifies all $(mn)(np)(mp)$ Brent equations modulo every prime, and runs exact rational matrix-multiplication checks together with a single-entry perturbation test.
 \end{enumerate}
 
-\section{New Characteristic-$0$ Upper Bounds}
+\section{New Characteristic-\texorpdfstring{$0$}{0} Upper Bounds}
 All baselines below are taken against the monotone closure of five sources as of November 24, 2026: Sedoglavic's \texttt{fmm\_sota.json} in \texttt{fmm\_digest} (commit \texttt{2daba01}, 2026-11-23), Sidebottom's \texttt{gsidebottom/mat\_mul} (2026-11-22, covering \texttt{schemes/}, \texttt{large/}, and \texttt{products/}), Quantavane (2026-11-14), Perminov (2026-11-16), and LITA (2026). All 58 schemes are mutually undominated and save 1,461 multiplications cumulatively.
 
 \begin{table}[ht]
 \centering
 \caption{All 10 new characteristic-$0$ upper bounds for formats with $\max(m,n,p)\le 16$.}
-\small
+\footnotesize
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{@{}lrrrrll@{}}
 \toprule
 Format & New Rank & Prev.\ SOTA & Gain & $\omega_{\text{new}}$ & Ring & Parent Scheme \\
@@ -108,7 +109,8 @@ $\langle 15\times 16\times 16\rangle$ & \textbf{2173} & 2193 & $-20$ & 2.79304 &
 \begin{table}[ht]
 \centering
 \caption{Selected highlights among the 48 new characteristic-$0$ upper bounds with $17\le \max(m,n,p)\le 30$ (the full 58-scheme dataset and standalone verifier are provided in the accompanying repository).}
-\small
+\footnotesize
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lrrrrll@{}}
 \toprule
 Format & New Rank & Prev.\ SOTA & Gain & $\omega_{\text{new}}$ & Ring & Parent Scheme \\
@@ -134,7 +136,7 @@ $\langle 16\times 17\times 18\rangle$ & \textbf{2830} & 2864 & $-34$ & 2.80645 &
 \end{table}
 
 \section{Data Availability}
-All 58 canonically oriented compressed exact schemes (\texttt{.json.gz}), complete tables (\texttt{RESULTS\_TABLE.md}), and the standalone Python/NumPy deterministic CRT verifier (\texttt{verify\_all.py}) are publicly released under the MIT license.
+All 58 canonically oriented compressed exact schemes (\texttt{.json.gz}), the complete summary tables (\texttt{RESULTS\_TABLE.md}), and the standalone Python/NumPy deterministic CRT verifier (\texttt{verify\_all.py}) are publicly released under the MIT license.
 
 \begin{thebibliography}{9}
 \bibitem{sedoglavic2026}
