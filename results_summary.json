@@ -1,0 +1,1393 @@
+{
+  "generated_at": "2026-11-24 12:07:44",
+  "total_undominated_records": 58,
+  "classic_le16_records": 10,
+  "dyadic_or_int_records": 14,
+  "total_multiplications_saved": 1461,
+  "records": [
+    {
+      "format": [
+        9,
+        11,
+        11
+      ],
+      "rank": 702,
+      "master_sota": 705,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 3,
+      "omega": 2.8116341615790783,
+      "omega_prev": 2.8134635865316175,
+      "ring": "Z[1/2]",
+      "denominator": 256,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "schemes/results/Q/9x11x12_m738_Q.json",
+      "file": "schemes_classic_le16/9x11x11_m702_dyadic.json.gz",
+      "size_kb": 39.2
+    },
+    {
+      "format": [
+        9,
+        11,
+        15
+      ],
+      "rank": 949,
+      "master_sota": 953,
+      "master_source": "Sidebottom_2026-11-22:schemes",
+      "sedoglavic": -1,
+      "gain": 4,
+      "omega": 2.816068399276403,
+      "omega_prev": 2.817796185298678,
+      "ring": "Z[1/2]",
+      "denominator": 64,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "schemes/9x11x16_987_dyadic/9x11x16_m987_Q.json.gz",
+      "file": "schemes_classic_le16/9x11x15_m949_dyadic.json.gz",
+      "size_kb": 65.4
+    },
+    {
+      "format": [
+        9,
+        17,
+        24
+      ],
+      "rank": 2097,
+      "master_sota": 2151,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 54,
+      "omega": 2.7952503074442343,
+      "omega_prev": 2.8045425498444607,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS346_9x18x24",
+      "file": "schemes_large/9x17x24_m2097_dyadic.json.gz",
+      "size_kb": 198.5
+    },
+    {
+      "format": [
+        9,
+        17,
+        30
+      ],
+      "rank": 2648,
+      "master_sota": 2711,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 63,
+      "omega": 2.8042816015304606,
+      "omega_prev": 2.81264757026487,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS356_9x18x30",
+      "file": "schemes_large/9x17x30_m2648_dyadic.json.gz",
+      "size_kb": 207.0
+    },
+    {
+      "format": [
+        9,
+        18,
+        23
+      ],
+      "rank": 2133,
+      "master_sota": 2140,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 7,
+      "omega": 2.7964977416144134,
+      "omega_prev": 2.797693054808703,
+      "ring": "Z[1/2]",
+      "denominator": 8,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS346_9x18x24",
+      "file": "schemes_large/9x18x23_m2133_dyadic.json.gz",
+      "size_kb": 203.2
+    },
+    {
+      "format": [
+        9,
+        18,
+        29
+      ],
+      "rank": 2690,
+      "master_sota": 2700,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 10,
+      "omega": 2.8021515774322574,
+      "omega_prev": 2.8034681806451753,
+      "ring": "Z[1/2]",
+      "denominator": 8,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS356_9x18x30",
+      "file": "schemes_large/9x18x29_m2690_dyadic.json.gz",
+      "size_kb": 202.5
+    },
+    {
+      "format": [
+        11,
+        11,
+        16
+      ],
+      "rank": 1224,
+      "master_sota": 1230,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 6,
+      "omega": 2.818257071214938,
+      "omega_prev": 2.8201953931942447,
+      "ring": "Z[1/2]",
+      "denominator": 8,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "schemes/results/Q/11x12x16_m1278_Q.json",
+      "file": "schemes_classic_le16/11x11x16_m1224_dyadic.json.gz",
+      "size_kb": 60.5
+    },
+    {
+      "format": [
+        11,
+        17,
+        18
+      ],
+      "rank": 2043,
+      "master_sota": 2059,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 16,
+      "omega": 2.815561046671204,
+      "omega_prev": 2.818442705623833,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS346_12x18x18",
+      "file": "schemes_large/11x17x18_m2043_dyadic.json.gz",
+      "size_kb": 196.7
+    },
+    {
+      "format": [
+        11,
+        18,
+        21
+      ],
+      "rank": 2443,
+      "master_sota": 2499,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 56,
+      "omega": 2.808536841410976,
+      "omega_prev": 2.816696363380099,
+      "ring": "Z[1/2]",
+      "denominator": 8,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS347_12x21x18",
+      "file": "schemes_large/11x18x21_m2443_dyadic.json.gz",
+      "size_kb": 183.7
+    },
+    {
+      "format": [
+        12,
+        13,
+        13
+      ],
+      "rank": 1270,
+      "master_sota": 1274,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 4,
+      "omega": 2.815609265302793,
+      "omega_prev": 2.8168481636838516,
+      "ring": "Z[1/2,1/3,1/13]",
+      "denominator": 59904,
+      "invertible_primes": [
+        2,
+        3,
+        13
+      ],
+      "source_scheme": "13x13x13_r1379.npz",
+      "file": "schemes_classic_le16/12x13x13_m1270_Q.json.gz",
+      "size_kb": 117.5
+    },
+    {
+      "format": [
+        12,
+        17,
+        17
+      ],
+      "rank": 2058,
+      "master_sota": 2114,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 56,
+      "omega": 2.807941817660649,
+      "omega_prev": 2.8178226244894016,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS346_12x18x18",
+      "file": "schemes_large/12x17x17_m2058_dyadic.json.gz",
+      "size_kb": 192.1
+    },
+    {
+      "format": [
+        12,
+        17,
+        18
+      ],
+      "rank": 2106,
+      "master_sota": 2148,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 42,
+      "omega": 2.796815514033286,
+      "omega_prev": 2.804032465770119,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS346_12x18x18",
+      "file": "schemes_large/12x17x18_m2106_dyadic.json.gz",
+      "size_kb": 184.0
+    },
+    {
+      "format": [
+        13,
+        14,
+        15
+      ],
+      "rank": 1644,
+      "master_sota": 1645,
+      "master_source": "Sidebottom_2026-11-22:schemes",
+      "sedoglavic": -1,
+      "gain": 1,
+      "omega": 2.807697548287115,
+      "omega_prev": 2.807928115733207,
+      "ring": "Z[1/2,1/5,1/17]",
+      "denominator": 108800,
+      "invertible_primes": [
+        2,
+        5,
+        17
+      ],
+      "source_scheme": "15x15x15_r1977.npz",
+      "file": "schemes_classic_le16/13x14x15_m1644_Q.json.gz",
+      "size_kb": 110.1
+    },
+    {
+      "format": [
+        13,
+        17,
+        17
+      ],
+      "rank": 2306,
+      "master_sota": 2320,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 14,
+      "omega": 2.8221051952762797,
+      "omega_prev": 2.8243111802043788,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/13x17x17_m2306_Q.json.gz",
+      "size_kb": 114.4
+    },
+    {
+      "format": [
+        14,
+        14,
+        15
+      ],
+      "rank": 1709,
+      "master_sota": 1715,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 6,
+      "omega": 2.7962096250059627,
+      "omega_prev": 2.7975261554855138,
+      "ring": "Z[1/2,1/5,1/17]",
+      "denominator": 54400,
+      "invertible_primes": [
+        2,
+        5,
+        17
+      ],
+      "source_scheme": "15x15x15_r1977.npz",
+      "file": "schemes_classic_le16/14x14x15_m1709_Q.json.gz",
+      "size_kb": 117.2
+    },
+    {
+      "format": [
+        14,
+        15,
+        15
+      ],
+      "rank": 1836,
+      "master_sota": 1842,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 6,
+      "omega": 2.7989562047282357,
+      "omega_prev": 2.800171318973086,
+      "ring": "Z[1/2,1/5,1/17]",
+      "denominator": 54400,
+      "invertible_primes": [
+        2,
+        5,
+        17
+      ],
+      "source_scheme": "15x15x15_r1977.npz",
+      "file": "schemes_classic_le16/14x15x15_m1836_Q.json.gz",
+      "size_kb": 111.2
+    },
+    {
+      "format": [
+        14,
+        16,
+        16
+      ],
+      "rank": 2110,
+      "master_sota": 2128,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 18,
+      "omega": 2.8058004582291676,
+      "omega_prev": 2.808914234003897,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 29030400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "16x16x16_r2236.npz",
+      "file": "schemes_classic_le16/14x16x16_m2110_Q.json.gz",
+      "size_kb": 482.3
+    },
+    {
+      "format": [
+        14,
+        16,
+        17
+      ],
+      "rank": 2246,
+      "master_sota": 2278,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 32,
+      "omega": 2.8078972962687443,
+      "omega_prev": 2.813044870543602,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 25200,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/14x16x17_m2246_Q.json.gz",
+      "size_kb": 137.8
+    },
+    {
+      "format": [
+        14,
+        17,
+        17
+      ],
+      "rank": 2400,
+      "master_sota": 2435,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 35,
+      "omega": 2.8113559666323193,
+      "omega_prev": 2.816585530309674,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/14x17x17_m2400_Q.json.gz",
+      "size_kb": 124.9
+    },
+    {
+      "format": [
+        14,
+        17,
+        18
+      ],
+      "rank": 2558,
+      "master_sota": 2596,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 38,
+      "omega": 2.8150124962360064,
+      "omega_prev": 2.8203024853055596,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS356_15x18x18",
+      "file": "schemes_large/14x17x18_m2558_dyadic.json.gz",
+      "size_kb": 196.8
+    },
+    {
+      "format": [
+        14,
+        18,
+        18
+      ],
+      "rank": 2630,
+      "master_sota": 2655,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 25,
+      "omega": 2.8057928933557603,
+      "omega_prev": 2.809163807470453,
+      "ring": "Z[1/2]",
+      "denominator": 8,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS356_15x18x18",
+      "file": "schemes_large/14x18x18_m2630_dyadic.json.gz",
+      "size_kb": 183.5
+    },
+    {
+      "format": [
+        15,
+        15,
+        16
+      ],
+      "rank": 2105,
+      "master_sota": 2132,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 27,
+      "omega": 2.8034050248436526,
+      "omega_prev": 2.808074284712564,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_classic_le16/15x15x16_m2105_Q.json.gz",
+      "size_kb": 376.6
+    },
+    {
+      "format": [
+        15,
+        15,
+        17
+      ],
+      "rank": 2248,
+      "master_sota": 2286,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 38,
+      "omega": 2.8067048175414633,
+      "omega_prev": 2.8128008276545855,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/15x15x17_m2248_Q.json.gz",
+      "size_kb": 164.2
+    },
+    {
+      "format": [
+        15,
+        16,
+        16
+      ],
+      "rank": 2173,
+      "master_sota": 2193,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 20,
+      "omega": 2.793039636209426,
+      "omega_prev": 2.796369885375531,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_classic_le16/15x16x16_m2173_Q.json.gz",
+      "size_kb": 162.5
+    },
+    {
+      "format": [
+        15,
+        16,
+        17
+      ],
+      "rank": 2310,
+      "master_sota": 2334,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 24,
+      "omega": 2.7947343377342495,
+      "omega_prev": 2.798464020075801,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/15x16x17_m2310_Q.json.gz",
+      "size_kb": 176.9
+    },
+    {
+      "format": [
+        15,
+        17,
+        17
+      ],
+      "rank": 2463,
+      "master_sota": 2490,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 27,
+      "omega": 2.7974769653413696,
+      "omega_prev": 2.8013826151446155,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/15x17x17_m2463_Q.json.gz",
+      "size_kb": 127.4
+    },
+    {
+      "format": [
+        15,
+        17,
+        18
+      ],
+      "rank": 2648,
+      "master_sota": 2705,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 57,
+      "omega": 2.8042816015304606,
+      "omega_prev": 2.811859232722348,
+      "ring": "Z[1/2]",
+      "denominator": 16,
+      "invertible_primes": [
+        2
+      ],
+      "source_scheme": "DPS40xS356_15x18x18",
+      "file": "schemes_large/15x17x18_m2648_dyadic.json.gz",
+      "size_kb": 193.3
+    },
+    {
+      "format": [
+        16,
+        16,
+        17
+      ],
+      "rank": 2385,
+      "master_sota": 2392,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 7,
+      "omega": 2.7846472907292816,
+      "omega_prev": 2.785696673058914,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/16x16x17_m2385_Q.json.gz",
+      "size_kb": 172.0
+    },
+    {
+      "format": [
+        16,
+        17,
+        17
+      ],
+      "rank": 2546,
+      "master_sota": 2553,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 7,
+      "omega": 2.787865075882132,
+      "omega_prev": 2.788841127467758,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 50400,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "17x17x17_r2723.npz",
+      "file": "schemes_large/16x17x17_m2546_Q.json.gz",
+      "size_kb": 162.2
+    },
+    {
+      "format": [
+        16,
+        17,
+        18
+      ],
+      "rank": 2830,
+      "master_sota": 2864,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 34,
+      "omega": 2.806451052592372,
+      "omega_prev": 2.810667964001098,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 484041600,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "18x18x18_r3031.npz",
+      "file": "schemes_large/16x17x18_m2830_Q.json.gz",
+      "size_kb": 827.2
+    },
+    {
+      "format": [
+        16,
+        18,
+        18
+      ],
+      "rank": 2891,
+      "master_sota": 2916,
+      "master_source": "Sedoglavic_2026-11-23",
+      "sedoglavic": -1,
+      "gain": 25,
+      "omega": 2.795176495043952,
+      "omega_prev": 2.798196493872216,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 242020800,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "18x18x18_r3031.npz",
+      "file": "schemes_large/16x18x18_m2891_Q.json.gz",
+      "size_kb": 811.1
+    },
+    {
+      "format": [
+        16,
+        19,
+        19
+      ],
+      "rank": 3256,
+      "master_sota": 3293,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 37,
+      "omega": 2.8014613547832754,
+      "omega_prev": 2.8053750875276195,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 705600,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "19x19x19_r3633.npz",
+      "file": "schemes_large/16x19x19_m3256_Q.json.gz",
+      "size_kb": 212.0
+    },
+    {
+      "format": [
+        17,
+        17,
+        18
+      ],
+      "rank": 2905,
+      "master_sota": 2923,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 18,
+      "omega": 2.7957379338550328,
+      "omega_prev": 2.797903613880411,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 242020800,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "18x18x18_r3031.npz",
+      "file": "schemes_large/17x17x18_m2905_Q.json.gz",
+      "size_kb": 848.9
+    },
+    {
+      "format": [
+        17,
+        18,
+        18
+      ],
+      "rank": 2963,
+      "master_sota": 2982,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 19,
+      "omega": 2.7840715983272704,
+      "omega_prev": 2.7862977347666966,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 242020800,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "18x18x18_r3031.npz",
+      "file": "schemes_large/17x18x18_m2963_Q.json.gz",
+      "size_kb": 861.7
+    },
+    {
+      "format": [
+        17,
+        18,
+        19
+      ],
+      "rank": 3133,
+      "master_sota": 3160,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 27,
+      "omega": 2.7860142804009747,
+      "omega_prev": 2.7889841668070794,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 2469600,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "19x19x19_r3633.npz",
+      "file": "schemes_large/17x18x19_m3133_Q.json.gz",
+      "size_kb": 452.9
+    },
+    {
+      "format": [
+        17,
+        19,
+        19
+      ],
+      "rank": 3323,
+      "master_sota": 3354,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 31,
+      "omega": 2.788995088643546,
+      "omega_prev": 2.79218893529338,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 352800,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "19x19x19_r3633.npz",
+      "file": "schemes_large/17x19x19_m3323_Q.json.gz",
+      "size_kb": 167.3
+    },
+    {
+      "format": [
+        17,
+        20,
+        20
+      ],
+      "rank": 3779,
+      "master_sota": 3796,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 17,
+      "omega": 2.8002885107898683,
+      "omega_prev": 2.801814387349564,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 2980052992,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "20x20x20_r3994.npz",
+      "file": "schemes_large/17x20x20_m3779_Q.json.gz",
+      "size_kb": 1249.1
+    },
+    {
+      "format": [
+        18,
+        18,
+        19
+      ],
+      "rank": 3217,
+      "master_sota": 3225,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 8,
+      "omega": 2.776860380366356,
+      "omega_prev": 2.777714357458164,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 2469600,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "19x19x19_r3633.npz",
+      "file": "schemes_large/18x18x19_m3217_Q.json.gz",
+      "size_kb": 461.2
+    },
+    {
+      "format": [
+        18,
+        19,
+        19
+      ],
+      "rank": 3416,
+      "master_sota": 3424,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 8,
+      "omega": 2.780269095160178,
+      "omega_prev": 2.7810684285071434,
+      "ring": "Z[1/2,1/3,1/5,1/7]",
+      "denominator": 2469600,
+      "invertible_primes": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "source_scheme": "19x19x19_r3633.npz",
+      "file": "schemes_large/18x19x19_m3416_Q.json.gz",
+      "size_kb": 433.9
+    },
+    {
+      "format": [
+        18,
+        19,
+        20
+      ],
+      "rank": 3772,
+      "master_sota": 3784,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 12,
+      "omega": 2.7977987199152925,
+      "omega_prev": 2.798877799564619,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 2980052992,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "20x20x20_r3994.npz",
+      "file": "schemes_large/18x19x20_m3772_Q.json.gz",
+      "size_kb": 1252.8
+    },
+    {
+      "format": [
+        18,
+        20,
+        20
+      ],
+      "rank": 3838,
+      "master_sota": 3865,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 27,
+      "omega": 2.7875001496879506,
+      "omega_prev": 2.789867999380225,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 2980052992,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "20x20x20_r3994.npz",
+      "file": "schemes_large/18x20x20_m3838_Q.json.gz",
+      "size_kb": 1086.8
+    },
+    {
+      "format": [
+        18,
+        21,
+        21
+      ],
+      "rank": 4274,
+      "master_sota": 4327,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 53,
+      "omega": 2.7931565414288757,
+      "omega_prev": 2.7972740598097556,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 5820416,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "21x21x21_r4723.npz",
+      "file": "schemes_large/18x21x21_m4274_Q.json.gz",
+      "size_kb": 524.7
+    },
+    {
+      "format": [
+        19,
+        19,
+        20
+      ],
+      "rank": 3854,
+      "master_sota": 3868,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 14,
+      "omega": 2.7880345789420486,
+      "omega_prev": 2.78925894585435,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 2980052992,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "20x20x20_r3994.npz",
+      "file": "schemes_large/19x19x20_m3854_Q.json.gz",
+      "size_kb": 1251.7
+    },
+    {
+      "format": [
+        19,
+        20,
+        20
+      ],
+      "rank": 3918,
+      "master_sota": 3935,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 17,
+      "omega": 2.7775601787255946,
+      "omega_prev": 2.7790137180350625,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 1490026496,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "20x20x20_r3994.npz",
+      "file": "schemes_large/19x20x20_m3918_Q.json.gz",
+      "size_kb": 1201.1
+    },
+    {
+      "format": [
+        19,
+        20,
+        21
+      ],
+      "rank": 4141,
+      "master_sota": 4154,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 13,
+      "omega": 2.780960443561027,
+      "omega_prev": 2.782007030455967,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 5820416,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "21x21x21_r4723.npz",
+      "file": "schemes_large/19x20x21_m4141_Q.json.gz",
+      "size_kb": 465.7
+    },
+    {
+      "format": [
+        19,
+        21,
+        21
+      ],
+      "rank": 4378,
+      "master_sota": 4394,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 16,
+      "omega": 2.7844231792591385,
+      "omega_prev": 2.785634663638961,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 5820416,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "21x21x21_r4723.npz",
+      "file": "schemes_large/19x21x21_m4378_Q.json.gz",
+      "size_kb": 613.7
+    },
+    {
+      "format": [
+        19,
+        22,
+        22
+      ],
+      "rank": 4905,
+      "master_sota": 4994,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 89,
+      "omega": 2.7933999225523984,
+      "omega_prev": 2.79931085832546,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 73903104,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "22x22x22_r5141.npz",
+      "file": "schemes_large/19x22x22_m4905_Q.json.gz",
+      "size_kb": 1917.3
+    },
+    {
+      "format": [
+        20,
+        20,
+        21
+      ],
+      "rank": 4221,
+      "master_sota": 4230,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 9,
+      "omega": 2.7715270151880107,
+      "omega_prev": 2.7722341630385112,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 5820416,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "21x21x21_r4723.npz",
+      "file": "schemes_large/20x20x21_m4221_Q.json.gz",
+      "size_kb": 658.0
+    },
+    {
+      "format": [
+        20,
+        21,
+        21
+      ],
+      "rank": 4462,
+      "master_sota": 4471,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 9,
+      "omega": 2.77497804420553,
+      "omega_prev": 2.7756434434360626,
+      "ring": "Z[1/2,1/7,1/29]",
+      "denominator": 5820416,
+      "invertible_primes": [
+        2,
+        7,
+        29
+      ],
+      "source_scheme": "21x21x21_r4723.npz",
+      "file": "schemes_large/20x21x21_m4462_Q.json.gz",
+      "size_kb": 633.4
+    },
+    {
+      "format": [
+        20,
+        21,
+        22
+      ],
+      "rank": 4897,
+      "master_sota": 4987,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 90,
+      "omega": 2.791403422267638,
+      "omega_prev": 2.7973867191143347,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 73903104,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "22x22x22_r5141.npz",
+      "file": "schemes_large/20x21x22_m4897_Q.json.gz",
+      "size_kb": 2016.5
+    },
+    {
+      "format": [
+        20,
+        22,
+        22
+      ],
+      "rank": 4970,
+      "master_sota": 5005,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 35,
+      "omega": 2.782091302947389,
+      "omega_prev": 2.784385172781841,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 73903104,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "22x22x22_r5141.npz",
+      "file": "schemes_large/20x22x22_m4970_Q.json.gz",
+      "size_kb": 1579.9
+    },
+    {
+      "format": [
+        20,
+        23,
+        23
+      ],
+      "rank": 5495,
+      "master_sota": 5554,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 59,
+      "omega": 2.7879098142479024,
+      "omega_prev": 2.791367283627373,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 4105728,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "23x23x23_r6009.npz",
+      "file": "schemes_large/20x23x23_m5495_Q.json.gz",
+      "size_kb": 738.1
+    },
+    {
+      "format": [
+        21,
+        21,
+        22
+      ],
+      "rank": 4991,
+      "master_sota": 5009,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 18,
+      "omega": 2.782781230005336,
+      "omega_prev": 2.7839576906725605,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 221709312,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "22x22x22_r5141.npz",
+      "file": "schemes_large/21x21x22_m4991_Q.json.gz",
+      "size_kb": 2001.3
+    },
+    {
+      "format": [
+        21,
+        22,
+        22
+      ],
+      "rank": 5060,
+      "master_sota": 5082,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 22,
+      "omega": 2.773214934985117,
+      "omega_prev": 2.7746255515107725,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 73903104,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "22x22x22_r5141.npz",
+      "file": "schemes_large/21x22x22_m5060_Q.json.gz",
+      "size_kb": 1688.6
+    },
+    {
+      "format": [
+        21,
+        22,
+        23
+      ],
+      "rank": 5333,
+      "master_sota": 5344,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 11,
+      "omega": 2.776921960548511,
+      "omega_prev": 2.777588714343983,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 912384,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "23x23x23_r6009.npz",
+      "file": "schemes_large/21x22x23_m5333_Q.json.gz",
+      "size_kb": 420.0
+    },
+    {
+      "format": [
+        21,
+        23,
+        23
+      ],
+      "rank": 5608,
+      "master_sota": 5628,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 20,
+      "omega": 2.7798634609189214,
+      "omega_prev": 2.781009932509056,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 8211456,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "23x23x23_r6009.npz",
+      "file": "schemes_large/21x23x23_m5608_Q.json.gz",
+      "size_kb": 852.4
+    },
+    {
+      "format": [
+        22,
+        22,
+        23
+      ],
+      "rank": 5413,
+      "master_sota": 5423,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 10,
+      "omega": 2.767851595454743,
+      "omega_prev": 2.7684458592714885,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 4105728,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "23x23x23_r6009.npz",
+      "file": "schemes_large/22x22x23_m5413_Q.json.gz",
+      "size_kb": 966.8
+    },
+    {
+      "format": [
+        22,
+        23,
+        23
+      ],
+      "rank": 5700,
+      "master_sota": 5710,
+      "master_source": "Sidebottom_2026-11-22:large",
+      "sedoglavic": -1,
+      "gain": 10,
+      "omega": 2.7712645556891498,
+      "omega_prev": 2.7718262443384094,
+      "ring": "Z[1/2,1/3,1/11]",
+      "denominator": 4105728,
+      "invertible_primes": [
+        2,
+        3,
+        11
+      ],
+      "source_scheme": "23x23x23_r6009.npz",
+      "file": "schemes_large/22x23x23_m5700_Q.json.gz",
+      "size_kb": 932.3
+    }
+  ]
+}
