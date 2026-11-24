@@ -19,9 +19,9 @@ See [RESULTS_TABLE.md](RESULTS_TABLE.md) for the complete 58-row table and [pape
 
 Given any exact bilinear scheme $\sum_{r=1}^R \langle U_r, A\rangle \langle V_r, B\rangle W_r = AB$ for $\langle m\times n\times p\rangle$ over a field $K$ and any nonzero vectors $\alpha, \beta \in K^d$ satisfying $\alpha^T \beta \ne 0$:
 
-1. Let $k$ be any index with $\alpha_k \ne 0$ and $J = \{0,\dots,d-1\} \setminus \{k\}$.
-2. Define $E \in K^{d\times(d-1)}$ by $E_J = I_{d-1}$ and $E_{k,j} = -\alpha_j / \alpha_k$ (so $\alpha^T E = 0$), and define $\Pi = R_J \bigl(I_d - \frac{\beta\alpha^T}{\alpha^T\beta}\bigr) \in K^{(d-1)\times d}$ (so $\Pi E = I_{d-1}$ and $\Pi \beta = 0$).
-3. Replacing $(U, V, W)$ by $(E^T U, V, \Pi W)$ (axis $0$), $(U \Pi^T, E^T V, W)$ (axis $1$), or $(U, V E, W \Pi^T)$ (axis $2$) yields an **exact** bilinear scheme for the reduced format, annihilating every term whose corresponding factor lies in $\operatorname{span}(\alpha)$ or $\operatorname{span}(\beta)$.
+1. Let $k$ be any index with $\alpha_k \ne 0$ and $J = \lbrace 0,\dots,d-1\rbrace \setminus \lbrace k\rbrace$.
+2. Define $E \in K^{d\times(d-1)}$ by $E_J = I_{d-1}$ and $E_{k,j} = -\alpha_j / \alpha_k$ (so $\alpha^T E = 0$), and define $\Pi = R_J (I_d - \frac{\beta\alpha^T}{\alpha^T\beta}) \in K^{(d-1)\times d}$ (so $\Pi E = I_{d-1}$ and $\Pi \beta = 0$).
+3. Replacing $(U, V, W)$ by $(E^T U, V, \Pi W)$ (axis $0$), $(U \Pi^T, E^T V, W)$ (axis $1$), or $(U, V E, W \Pi^T)$ (axis $2$) yields an **exact** bilinear scheme for the reduced format, annihilating every term whose corresponding factor lies in $\mathrm{span}(\alpha)$ or $\mathrm{span}(\beta)$.
 4. We follow each oblique deletion by **Optimal Pivot-Exchange 2-Reduction** on the pair nullspaces ($U\odot V$, $U\odot W$, $V\odot W$), selecting free-row pivot bases that maximize simultaneous complementary-row cancellations, and replay the entire chain in exact rational arithmetic (`fractions.Fraction`).
 
 Whereas standard coordinate deletion ($\alpha = \beta = e_k$) kills $0$ terms directly on even LITA squares ($14^3, 16^3, 18^3, 20^3, 22^3, \dots$) and misses the internal dual vectors on odd LITA squares ($13^3, 15^3, 17^3, 19^3, 21^3, 23^3, \dots$), symmetric oblique projection along LITA's half-period eigenvectors ($e_i \pm e_{i+m}$) and internal dual vectors unlocks massive direct annihilations and cascaded 2-reductions.
@@ -43,7 +43,7 @@ python verify_all.py
 
 For each scheme, `verify_all.py`:
 1. Parses every rational coefficient via exact `fractions.Fraction` and clears exact LCM denominators $(d_U, d_V, d_W)$, setting $D = d_U d_V d_W$.
-2. Computes the rigorous infinity-norm bound $B = D + \sum_{r=1}^R \|U_r\|_\infty \|V_r\|_\infty \|W_r\|_\infty$ and selects deterministic 30-bit primes $P_1, \dots, P_k$ with $\prod_i P_i > 2B$.
+2. Computes the rigorous infinity-norm bound $B = D + \sum_{r=1}^R \lVert U_r\rVert_\infty \lVert V_r\rVert_\infty \lVert W_r\rVert_\infty$ and selects deterministic 30-bit primes $P_1, \dots, P_k$ with $\prod_i P_i > 2B$.
 3. Checks **all $(mn)(np)(mp)$ Brent tensor equations** modulo every $P_i$ using exact 15-bit split arithmetic (asserting $R \cdot 32767^2 < 2^{52}$ for bit-exact zero-rounding evaluation). By the Chinese Remainder Theorem, passing proves exact equality over $\mathbb{Z}$ and $\mathbb{Q}$ with **zero probability of error**.
 4. Additionally runs exact Python `Fraction` random matrix multiplication trials and a negative corruption check (perturbing a single entry must be rejected).
 
